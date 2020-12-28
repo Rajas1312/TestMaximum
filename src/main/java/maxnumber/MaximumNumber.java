@@ -2,19 +2,8 @@ package maxnumber;
 
 public class MaximumNumber {
 
-    public static Integer max(Integer x,Integer y,Integer z){
-        Integer max=x;
-        if(y.compareTo(max)>0){
-            max=y;
-        }
-        if(z.compareTo(max)>0){
-            max=z;
-        }
-         printMax(x,y,z,max);
-        return max;
-    }
-    public static Float max(Float x,Float y,Float z){
-        Float max=x;
+    public static <T extends Comparable<T>> T maximum(T x,T y,T z){
+        T max=x;
         if(y.compareTo(max)>0){
             max=y;
         }
@@ -24,26 +13,7 @@ public class MaximumNumber {
         printMax(x,y,z,max);
         return max;
     }
-    public static String max(String x,String y,String z){
-        String max=x;
-        if(y.compareTo(max)>0){
-            max=y;
-        }
-        if(z.compareTo(max)>0){
-            max=z;
-        }
-        printMax(x,y,z,max);
-        return max;
+    public static <T> void printMax(T x,T y,T z,T max){
+        System.out.println("Maximum is " +max);
     }
-
-    private static void printMax(Integer x, Integer y, Integer z, Integer max) {
-        System.out.println("maximum is "+max);
-    }
-    private static void printMax(Float x, Float y, Float z, Float max) {
-        System.out.println("maximum is "+max);
-    }
-    private static void printMax(String x, String y, String  z, String  max) {
-        System.out.println("maximum is "+max);
-    }
-
 }
