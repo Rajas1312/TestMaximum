@@ -1,31 +1,41 @@
 package maxnumber;
 
-public class MaximumNumber<T extends Comparable<T>> {
-    T x;
-    T y;
-    T z;
-
-    public MaximumNumber(T x, T y, T z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+public class MaximumNumber<T extends Comparable> {
+    T element1;
+    T element2;
+    T element3;
+    public MaximumNumber(T element1, T element2, T element3) {
+        this.element1 = element1;
+        this.element2 = element2;
+        this.element3 = element3;
     }
-    public T maximum(){
-        return  MaximumNumber.maximum(x,y,z);
+    public T getMaximum(T[] arrTest){
+       return (T)MaximumNumber.testMaximum(element1,element2,element3,arrTest);
     }
-
-    public static <T extends Comparable<T>> T maximum(T x, T y, T z){
-        T max=x;
-        if(y.compareTo(max)>0){
-            max=y;
+   public static <T extends Comparable<T>> T testMaximum(T element1, T element2, T element3,T[] arrTest){
+        T maximum=element1;
+        arrTest[0]=maximum;
+        arrTest[1]=element2;
+        arrTest[2]=element3;
+        if(element2.compareTo(maximum)>0){
+            maximum=element2;
+            arrTest[0]=maximum;
+            arrTest[1]=element1;
+            arrTest[2]=element3;
         }
-        if(z.compareTo(max)>0){
-            max=z;
+        if(element3.compareTo(maximum)>0){
+            maximum=element3;
+            arrTest[0]=maximum;
+            arrTest[1]=element1;
+            arrTest[2]=element2;
         }
-        printMax(x,y,z,max);
-        return max;
+        printMax(element1,element2,element3,maximum,arrTest);
+        return maximum;
     }
-    public static <T> void printMax(T x,T y,T z,T max){
+    public static <T> void printMax(T x,T y,T z,T max,T[] arrTest){
+
         System.out.println("Maximum is " +max);
+        System.out.println(java.util.Arrays.toString(arrTest));
     }
+
 }
